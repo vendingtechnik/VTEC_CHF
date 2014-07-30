@@ -16,10 +16,11 @@ class vtec_chf extends vtec_chf_parent
     public function getPrice()
     {
      // Währung abrufen und prüfen
-     $oMoney = oxRegistry::getConfig()->getActShopCurrencyObject(); 
-     $sMoney = strtoupper($oMoney->name);      // Währungszeichen in Grossbuchstaben damit evt. Schreibfehler keine Fehler machen
+     $oMoney = oxRegistry::getConfig()->getActShopCurrencyObject();  // Objekt laden...
+     $sMoney = strtoupper($oMoney->name);      // Währungszeichen auslesen und in Grossbuchstaben umwandeln damit evt. 
+                                               // Schreibfehler keine Fehler verursachen
 		
-		if($sMoney == "CHF" )
+		if($sMoney == "CHF" )   // Währung prüfen...
        { 
         if ( $this->_blNetPriceMode ) {
             return $this->getNettoPrice();
@@ -27,14 +28,14 @@ class vtec_chf extends vtec_chf_parent
             else {
             $value = round(($this->getBruttoPrice()+0.000001)*20)/20;
             return $value;
-         } //ende else
+         } 
          }
-        else {
+        else {            // falls nicht obige Bedingung(en), dann nicht runden (Originalfunktion)
           if ( $this->_blNetPriceMode ) {
             return $this->getNettoPrice();
           } else {
             return $this->getBruttoPrice();
           }
          }
-        } // ende public
-} // ende class
+     } 
+} 
