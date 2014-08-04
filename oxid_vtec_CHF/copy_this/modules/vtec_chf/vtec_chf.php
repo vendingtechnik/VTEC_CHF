@@ -19,6 +19,14 @@ class vtec_chf extends vtec_chf_parent
      $oMoney = oxRegistry::getConfig()->getActShopCurrencyObject();  // Objekt laden...
      $sMoney = strtoupper($oMoney->name);      // Währungszeichen auslesen und in Grossbuchstaben umwandeln damit evt. 
                                                // Schreibfehler keine Fehler verursachen
+                                               
+/**  getActShopCurrencyObject Objektinhalt
+ * ->rate        Umrechnungsfaktor  
+ * ->dec         Dezimalpunktzeichen
+ * ->thousand    Tausenderzeichen
+ * ->sign        Währungszeichen
+ */
+                                                 
 		
 		if($sMoney == "CHF" )   // Währung prüfen...
        { 
